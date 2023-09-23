@@ -1,0 +1,16 @@
+
+{
+    "name": "waka/wn-snappypdf-plugin",
+    "description": "Plugin pour salesforce",
+    "type": "winter-plugin",
+    "require": {
+        "spatie/browsershot": "^3.52"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Charles Saint Olive",
+            "email": "contact@notilac.fr"
+        }
+    ]
+}
