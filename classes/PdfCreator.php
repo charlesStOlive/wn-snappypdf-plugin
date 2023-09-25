@@ -15,14 +15,12 @@ class PdfCreator
     public $outputName;
     private $options;
 
-    public function __construct($slug,$vars, $options = [])
+    public function __construct($slug,$vars)
     {
         $this->pdf = Pdf::findBySlug($slug);
         $this->options = [];
         $this->setModelOptions();
         $this->vars = $vars;
-        //trace_log('options from creator!', $options);
-        $this->options = array_merge($this->options, $options);
     }
 
     public function saveTo() {

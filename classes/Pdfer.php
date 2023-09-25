@@ -12,7 +12,7 @@ use ApplicationException;
 use ValidationException;
 
 
-class Pdfer implements BaseProductor, SaveTo, Show
+class Pdfer implements BaseProductor
 {
     use \Waka\Productor\Classes\Traits\TraitProductor;
 
@@ -44,6 +44,19 @@ class Pdfer implements BaseProductor, SaveTo, Show
         return $formWidget;
     }
 
+    /**
+     * Instancieation de la class creator
+     *
+     * @param string $url
+     * @return \Spatie\Browsershot\Browsershot
+     */
+    private static function instanciateCreator(string $templateCode, array $vars)
+    {
+        $productorClass = self::getConfig()['productorCreator'];
+        $class = new $productorClass($templateCode, $vars);
+        return $class;
+    }
+
     public static function execute($templateCode, $productorHandler, $allDatas):array {
         $modelId = Arr::get($allDatas, 'modelId');
         $modelClass = Arr::get($allDatas, 'modelClass');
@@ -56,7 +69,7 @@ class Pdfer implements BaseProductor, SaveTo, Show
             $data = $targetModel->dsMap($dsMap);
         }
         if($productorHandler == "saveTo") {
-            $link = self::saveTo($templateCode, $data, [], '', function($pdf) use($allDatas) {
+            $link = self::saveTo($templateCode, $data, function($pdf) use($allDatas) {
                 $pdf->setOutputName(\Arr::get($allDatas, 'productorDataArray.output_name'));
             });
             return [
@@ -71,9 +84,9 @@ class Pdfer implements BaseProductor, SaveTo, Show
         return [];
     }
 
-    public static function saveTo(string $templateCode, array $vars, array $options = [], string $path ='',  Closure $callback = null) {
+    public static function saveTo(string $templateCode, array $vars, Closure $callback = null) {
         // Créer l'instance de pdf
-        $creator = self::instanciateCreator($templateCode, $vars, $options);
+        $creator = self::instanciateCreator($templateCode, $vars);
 
         // Appeler le callback pour définir les options
         if (is_callable($callback)) {
@@ -88,9 +101,9 @@ class Pdfer implements BaseProductor, SaveTo, Show
         
     }
 
-    public static function show(string $templateCode, array $vars, array $options, Closure $callback = null) {
+    public static function show(string $templateCode, array $vars, Closure $callback = null) {
         // Créer l'instance de pdf
-        $creator = self::instanciateCreator($templateCode, $vars, $options);
+        $creator = self::instanciateCreator($templateCode, $vars);
         // Appeler le callback pour définir les options
         if (is_callable($callback)) {
             $callback($creator);
