@@ -2,21 +2,21 @@
 
 return [
     'driver' => [
-        'description' => 'Création de PDF depuis Template ou BDD',
-        'label' => 'Création de PDF'
+        'description' => 'Création de PDF depuis un template ou une BDD',
+        'label' => 'Création de PDF',
+        'execute' => [
+            'success' => 'PDF prêt pour téléchargement',
+        ],
     ],
     'models' => [
         'general' => [
-            'created_at' => 'Created At',
+            'created_at' => 'Créé le',
             'id' => 'ID',
-            'updated_at' => 'Updated At'
-        ]
-    ],
-    'permissions' => [
-        'some_permission' => 'Some permission'
+            'updated_at' => 'Mis à jour le',
+        ],
     ],
     'plugin' => [
-        'description' => 'No description provided yet...',
-        'name' => 'snappyPdf'
-    ]
+        'description' => 'Aucune description fournie pour le moment...',
+        'name' => 'snappyPdf',
+    ],
 ];

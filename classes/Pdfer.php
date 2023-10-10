@@ -16,7 +16,7 @@ class Pdfer extends BaseProductor
 {
     public static $config = [
             'label' => 'waka.snappypdf::lang.driver.label',
-            'icon' => 'icon-mjml',
+            'icon' => 'icon-file-pdf',
             'description' => 'waka.snappypdf::lang.driver.description',
             'productorModel' => \Waka\SnappyPdf\Models\Pdf::class,
             'productorCreator' => \Waka\SnappyPdf\Classes\PdfCreator::class,
@@ -40,9 +40,9 @@ class Pdfer extends BaseProductor
                 $pdf->setOutputName(\Arr::get($allDatas, 'productorDataArray.output_name'));
             });
             return [
-                'message' => 'PDF prêt pour télechargement',
+                'message' => 'waka.snappypdf::lang.driver.execute.success',
                 'btn' => [
-                    'label' => 'Télécharger le fichier',
+                    'label' => 'waka.productor::lang.drivers.sucess_label.close_download',
                     'request' => 'onCloseAndDownload',
                     'link' => $link
                 ],
@@ -99,7 +99,7 @@ class Pdfer extends BaseProductor
         return $class;
     }
 
-    public static function updateFormwidget($slug, $formWidget)
+    public static function updateFormwidget($slug, $formWidget, $config)
     {
         $productorModel = self::getProductor($slug);
         $formWidget->getField('output_name')->value = $productorModel->output_name;

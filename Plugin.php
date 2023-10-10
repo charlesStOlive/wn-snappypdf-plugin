@@ -71,14 +71,6 @@ class Plugin extends PluginBase
     public function registerPermissions(): array
     {
         return []; // Remove this line to activate
-
-        return [
-            'waka.snappypdf.some_permission' => [
-                'tab' => 'waka.snappypdf::lang.plugin.name',
-                'label' => 'waka.snappypdf::lang.permissions.some_permission',
-                'roles' => [UserRole::CODE_DEVELOPER, UserRole::CODE_PUBLISHER],
-            ],
-        ];
     }
 
     /**
