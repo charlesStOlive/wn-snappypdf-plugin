@@ -4,6 +4,7 @@ use Backend;
 use Backend\Models\UserRole;
 use System\Classes\PluginBase;
 use App;
+use Lang;
 
 /**
  * snappyPdf Plugin Information File
@@ -66,27 +67,42 @@ class Plugin extends PluginBase
     }
 
     /**
-     * Registers any backend permissions used by this plugin.
+     * Registers any back-end permissions used by this plugin.
+     *
+     * @return array
      */
-    public function registerPermissions(): array
+    public function registerPermissions()
     {
-        return []; // Remove this line to activate
+        return [
+            'waka.snappypdf.admin.super' => [
+                'tab' => 'Waka - Pdfer',
+                'label' => 'Super administrateur de Pdfer',
+            ],
+            'waka.snappypdf.admin.base' => [
+                'tab' => 'Waka - Pdfer',
+                'label' => 'Administrateur de Pdfer',
+            ],
+            'waka.snappypdf.user' => [
+                'tab' => 'Waka - Pdfer',
+                'label' => 'Utilisateur de Pdfer',
+            ],
+        ];
     }
 
     /**
      * Registers backend navigation items for this plugin.
      */
-    public function registerNavigation(): array
+    public function registerSettings(): array
     {
-        return []; // Remove this line to activate
-
         return [
-            'snappypdf' => [
-                'label'       => 'waka.snappypdf::lang.plugin.name',
-                'url'         => Backend::url('waka/snappypdf/mycontroller'),
-                'icon'        => 'icon-leaf',
-                'permissions' => ['waka.snappypdf.*'],
-                'order'       => 500,
+           'pdfs' => [
+                'label' => Lang::get('waka.snappypdf::lang.menu.pdf.label'),
+                'description' => Lang::get('waka.snappypdf::lang.menu.pdf.description'),
+                'category' => Lang::get('waka.wutils::lang.menu.model_category'),
+                'icon' => 'icon-file-pdf',
+                'url' => Backend::url('waka/snappypdf/pdfs'),
+                'permissions' => ['waka.snappypdf.admin.*'],
+                'order' => 30,
             ],
         ];
     }

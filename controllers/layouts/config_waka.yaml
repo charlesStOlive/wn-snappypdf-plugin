@@ -1,0 +1,40 @@
+# ===================================
+#  WakaController | Workflow | Productor |  Behavior Config
+# ===================================
+
+
+modelClass: Waka\SnappyPdf\Models\Layout
+backendUrl: waka/snappypdf/layouts
+
+workflow: false 
+
+controllerConfig:
+    breadcrump:
+        inSettings: true 
+        title: waka.snappypdf::lang.models.layout.label
+        rows:    
+            preIndex: 
+                label: waka.snappypdf::lang.controllers.pdfs.label
+                url:  waka/snappypdf/pdfs 
+            index: 
+                url: waka/snappypdf/layouts 
+                label: waka.snappypdf::lang.controllers.layouts.label
+    index:
+        base:
+            create: 
+                show: true
+                permissions: [waka.snappypdf.*]
+            reorder: 
+                show: false  
+                permissions: []
+            delete: 
+                show: true
+                permissions: [waka.snappypdf.*]
+        partials:
+            index_btn:
+                url: $/waka/snappypdf/controllers/layouts/_index_btn.php
+    partials:   
+            return: 
+                url: $/waka/snappypdf/controllers/layouts/_return_btn.htm
+
+

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: waka.snappypdf::lang.controllers.layouts.label
+
+# Model Form Field configuration
+form: $/waka/snappypdf/models/layout/fields.yaml
+
+# Model Class name
+modelClass: Waka\SnappyPdf\Models\Layout
+
+# Default redirect location
+defaultRedirect: waka/snappypdf/layouts
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: waka/snappypdf/layouts/update/:id
+    redirectClose: waka/snappypdf/layouts
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: waka/snappypdf/layouts/update/:id
+    redirectClose: waka/snappypdf/layouts
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title
