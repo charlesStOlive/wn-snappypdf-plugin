@@ -4,6 +4,7 @@ use Model;
 use Waka\SnappyPdf\Classes\ModelFileParser;
 use File as FileHelper;
 use View;
+use Arr;
 /**
  * pdf Model
  */
@@ -39,7 +40,9 @@ class Pdf extends Model
     /**
      * @var array Attributes to be cast to JSON
      */
-    protected $jsonable = [];
+    protected $jsonable = [
+        'config'
+    ];
 
     /**
      * @var array Attributes to be appended to the API representation of the model (ex. toArray())
@@ -63,16 +66,12 @@ class Pdf extends Model
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [
-        'rule_asks' => [
-            'Waka\WakaBlocs\Models\RuleAsk',
-            'name' => 'askeable',
-            'delete' => true
-        ],
-    ];
+    public $hasMany = [];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
-    public $belongsTo = [];
+    public $belongsTo = [
+        'layout' => [Layout::class],
+    ];
     public $belongsToMany = [];
     public $morphTo = [];
     public $morphOne = [];
@@ -129,12 +128,21 @@ class Pdf extends Model
      */
     protected function fillFromSections($sections)
     {
-        $this->html = array_get($sections, 'html');
-        //trace_log('pdf settings!',array_get($sections, 'settings'));
-        $this->output_name = array_get($sections, 'settings.output_name', 'pas de titre');
-        $this->has_footer = array_get($sections, 'settings.has_footer', null);
-        $this->paper_width = array_get($sections, 'settings.paper_width', null);
-        $this->paper_height = array_get($sections, 'settings.paper_height', null);
+        $layoutSlug = Arr::get($sections, 'settings.layout', null);
+        $layout = Layout::where('slug', $layoutSlug)->first();
+        if($layout) {
+            $this->layout = $layout;    
+        }
+        $this->html = Arr::get($sections, 'html');
+        $this->name = Arr::get($sections, 'settings.name', 'pas de nom');
+        //trace_log('pdf settings!',Arr::get($sections, 'settings'));
+        $this->output_name = Arr::get($sections, 'settings.output_name', 'pas de titre');
+        $this->config = [
+                'has_footer' => Arr::get($sections, 'settings.has_footer', null),
+                'paper_width' => Arr::get($sections, 'settings.paper_width', null),
+                'paper_height' => Arr::get($sections, 'settings.paper_height', null)
+
+        ];
     }
 
     /**

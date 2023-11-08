@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('waka_snappypdf_pdfs', function (Blueprint $table) {
-            $table->integer('layout_id')->unsigned()->default(1);
+            $table->integer('layout_id')->unsigned()->nullable();
             $table->boolean('is_synced')->default(false);
         });
     }

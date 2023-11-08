@@ -1,8 +1,61 @@
-# ===================================
-#  Form Field Definitions
-# ===================================
-
 fields:
-    id:
-        label: 'waka.snappypdf::lang.models.general.id'
-        disabled: true
+    output_name:
+        label: waka.snappypdf::lang.model.pdf.output_name
+        span: full
+        required: true
+tabs:
+    defaultTab: waka.snappypdf::lang.models.tab_edit
+    icons: 
+        waka.snappypdf::lang.model.pdf.tab_config: icon-cog
+        waka.snappypdf::lang.model.pdf.tab_edit: icon-pencil
+    fields: 
+        html:
+            label: waka.snappypdf::lang.model.pdf.html
+            span: full
+            type: codeeditor
+            language: html
+            size: giant
+            permissions: [waka.mailer.admin.super]
+            tab: waka.snappypdf::lang.model.pdf.tab_edit
+        # prod_asks: 
+        #     label: Mettre en place des données éditables lors de la géneration du modèle 
+        #     tab: waka.snappypdf::lang.model.pdf.tab_edit
+        #     commentAbove: Le modèle cible doit avoir le trait ds pour que cela fonctionne
+        #     type: blocks 
+        #     style: collapsed
+        #     allow: 
+        #     tags: 
+        #         - asks
+        config:
+            tab: waka.snappypdf::lang.model.pdf.tab_config
+            type: nestedform
+            usePanelStyles: true
+            form:
+                fields: 
+                    paper_width:
+                        label: waka.snappypdf::lang.model.pdf.paper_width
+                        type: number
+                        span: left
+                    paper_height:
+                        label: waka.snappypdf::lang.model.pdf.paper_height
+                        type: number
+                        span: right
+                    has_footer:
+                        label: waka.snappypdf::lang.model.pdf.open_log
+                        span: left
+                        type: switch
+secondaryTabs:
+    fields:
+        name: 
+            label: waka.snappypdf::lang.model.pdf.name
+        slug:
+            label: waka.snappypdf::lang.model.pdf.slug
+        layout: 
+            label: waka.snappypdf::lang.model.pdf.layout
+            type: relation
+            span: full
+            select: name
+    # infos:
+    #     span: full
+    #     type: modelinfo
+    #     dsMap: resumer

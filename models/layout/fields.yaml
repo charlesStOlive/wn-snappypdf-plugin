@@ -3,6 +3,16 @@
 # ===================================
 
 fields:
-    id:
-        label: 'waka.snappypdf::lang.models.general.id'
-        disabled: true
+    name:
+        label: waka.snappypdf::lang.models.layout.name
+        searchable: true
+        span: left
+    slug: 
+        label: waka.snappypdf::lang.models.layout.slug
+        span: right
+        preset: name
+    template: 
+        label: waka.snappypdf::lang.models.layout.template
+        type: codeeditor
+        size: giant 
+        language: html

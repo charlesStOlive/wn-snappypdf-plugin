@@ -19,6 +19,7 @@ create:
     title: backend::lang.form.create_title
     redirect: waka/snappypdf/pdfs/update/:id
     redirectClose: waka/snappypdf/pdfs
+    form: $/waka/snappypdf/models/pdf/fields_create.yaml
 
 # Update page
 update:

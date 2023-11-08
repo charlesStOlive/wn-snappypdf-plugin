@@ -50,13 +50,13 @@ class PdfCreator
 
     private function setModelOptions() {
         
-        if($this->pdf->has_footer) {
+        if($this->pdf->config['has_footer']) {
             $this->options['footer'] = true;
         } 
-        if($paperWith = $this->pdf->paper_width) {
+        if($paperWith = $this->pdf->config['paper_width']) {
             $this->options['paperSize']['with'] = $paperWith;
         } 
-        if($paperHeight = $this->pdf->paper_height) {
+        if($paperHeight = $this->pdf->config['paper_height']) {
             $this->options['paperSize']['height'] = $paperHeight;
         } 
     }
@@ -102,6 +102,9 @@ class PdfCreator
      */
     private function instanciateHtmlPdf()
     {
+        if($htmlLayout = $this->pdf->layout->template ?? false) {
+            $this->pdf->html = \Winter\Storm\Parse\Bracket::parse($htmlLayout, ['htmlContents' => $this->pdf->html]);
+        }
         $html = $this->parseModelField($this->pdf->html, $this->vars);
         return $this->configureBrowsershot(Browsershot::html($html));
     }

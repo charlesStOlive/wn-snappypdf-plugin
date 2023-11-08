@@ -1,1 +1,1 @@
-<?= $this->wakaController->renderUpdate() ?>
+<?= $this->wakaController->renderUpdate(true) ?>

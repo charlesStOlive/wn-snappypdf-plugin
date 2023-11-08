@@ -1,0 +1,48 @@
+fields:
+    name: 
+        label: waka.snappypdf::lang.model.pdf.name
+        span: left
+    slug:
+        label: waka.snappypdf::lang.model.pdf.slug
+        span: right
+    layout: 
+        label: waka.snappypdf::lang.model.pdf.layout
+        type: relation
+        span: full
+        select: name
+    output_name:
+        label: waka.snappypdf::lang.model.pdf.output_name
+        span: full
+        required: true
+    html:
+        label: waka.snappypdf::lang.model.pdf.html
+        span: full
+        type: codeeditor
+        language: html
+        size: giant
+    # prod_asks: 
+    #     label: Mettre en place des données éditables lors de la géneration du modèle 
+    #     tab: waka.snappypdf::lang.model.pdf.tab_edit
+    #     commentAbove: Le modèle cible doit avoir le trait ds pour que cela fonctionne
+    #     type: blocks 
+    #     style: collapsed
+    #     allow: 
+    #     tags: 
+    #         - asks
+    config:
+        type: nestedform
+        usePanelStyles: true
+        form:
+            fields: 
+                paper_width:
+                    label: waka.snappypdf::lang.model.pdf.paper_width
+                    type: number
+                    span: left
+                paper_height:
+                    label: waka.snappypdf::lang.model.pdf.paper_height
+                    type: number
+                    span: right
+                has_footer:
+                    label: waka.snappypdf::lang.model.pdf.open_log
+                    span: left
+                    type: switch

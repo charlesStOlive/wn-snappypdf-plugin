@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug')->nullable();
-            $table->string('html')->nullable();
+            $table->mediumText('html')->nullable();
             $table->string('map_key')->nullable();
             $table->string('output_name')->nullable();
             $table->json('config')->nullable();

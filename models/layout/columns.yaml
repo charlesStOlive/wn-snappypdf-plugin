@@ -3,9 +3,11 @@
 # ===================================
 
 columns:
-    id:
-        label: 'waka.snappypdf::lang.models.general.id'
+    name:
+        label: waka.mailmjml::lang.models.layout.name
         searchable: true
+    slug: 
+        label: waka.mailmjml::lang.models.layout.slug
     created_at:
         label: 'waka.snappypdf::lang.models.general.created_at'
         type: datetime
