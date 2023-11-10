@@ -3,6 +3,6 @@ files:
         title: Module Productor
         category_slug: "modules"
         comment: "Production de PDF"
-        permission: waka.docser.modules
+        permissions: waka.docser.modules
         relativePath: waka/snappypdf/docs
         sort_order: 1000
