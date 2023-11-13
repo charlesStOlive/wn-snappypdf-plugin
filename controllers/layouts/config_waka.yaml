@@ -9,7 +9,7 @@ backendUrl: waka/snappypdf/layouts
 workflow: false 
 
 controllerConfig:
-    breadcrump:
+    breadcrumb:
         inSettings: true 
         title: waka.snappypdf::lang.models.layout.label
         rows:    
