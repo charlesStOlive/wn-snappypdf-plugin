@@ -1,11 +1,39 @@
 <?php
 
 return [
+    'controllers' => [
+        'layouts' => [
+            'label' => 'Layouts',
+        ],
+        'pdfs' => [
+            'label' => 'PDFs',
+        ],
+    ],
     'driver' => [
-        'description' => 'Création de PDF depuis un template ou une BDD',
-        'label' => 'Création de PDF',
+        'description' => 'Creating PDFs from a template or a database',
         'execute' => [
-            'success' => 'PDF prêt pour téléchargement',
+            'success' => 'PDF ready for download',
+        ],
+        'label' => 'PDF Creation',
+    ],
+    'menu' => [
+        'pdf' => [
+            'description' => 'PDF management',
+            'label' => 'PDFs',
+        ],
+    ],
+    'model' => [
+        'pdf' => [
+            'html' => 'HTML content',
+            'layout' => 'Layout',
+            'name' => 'PDF title',
+            'open_log' => 'Activate the footer',
+            'output_name' => 'Output name',
+            'paper_height' => 'Paper height',
+            'paper_width' => 'Paper width',
+            'slug' => 'Code/Slug',
+            'tab_config' => 'Configuration',
+            'tab_edit' => 'Editing',
         ],
     ],
     'models' => [
@@ -14,48 +42,19 @@ return [
             'id' => 'ID',
             'updated_at' => 'Updated At',
         ],
-        'pdf' => [
-            'label' => 'Pdf',
-        ],
         'layout' => [
             'label' => 'Layout',
-            'name' => 'Intitulé',
+            'name' => 'Title',
             'slug' => 'Code/Slug',
             'template' => 'Template',
         ],
+        'pdf' => [
+            'label' => 'PDF',
+        ],
+        'tab_edit' => 'Editing',
     ],
     'plugin' => [
-        'description' => 'Aucune description fournie pour le moment...',
+        'description' => 'No description provided for now...',
         'name' => 'snappyPdf',
-    ],
-    'controllers' => [
-        'pdfs' => [
-            'label' => 'Pdfs',
-        ],
-        'layouts' => [
-            'label' => 'Layouts',
-        ],
-    ],
-    'menu' => [
-        'pdf' => [
-            'label' => 'Pdfs',
-            'description' => 'Gestion des PDFs',
-        ],
-    ],
-    'model' => [
-        'pdf' => [
-            'tab_info' => 'Info',
-            'html' => 'Contenu html',
-            'tab_options' => 'Configurations',
-            'paper_width' => 'Largeur du papier',
-            'paper_height' => 'Hauteur du papier',
-            'open_log' => 'Activer le footer',
-            'output_name' => 'Nom de sortie',
-            'layout' => 'Layout',
-            'slug' => 'Code/Slug',
-            'name' => 'Intitulé du PDF',
-            'tab_config' => 'Configuration',
-            'tab_edit' => 'Edition',
-        ],
     ],
 ];
