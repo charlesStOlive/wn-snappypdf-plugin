@@ -24,7 +24,6 @@ class PdfCreator
     }
 
     public function saveTo() {
-        //trace_log($this->pdf->toArray());
         $this->outputName = $this->outputName ?: $this->pdf->output_name;
         //trace_log('output_name',  $this->outputName);
         $finalName = \Str::slug($this->parseModelField($this->outputName, $this->vars), '_');
@@ -37,6 +36,7 @@ class PdfCreator
         
         $path = $basePath.'/'.$finalName . '.pdf';
         $pdf->save($path);
+        //trace_log('path',$path);
         return $path;
     }
 
@@ -76,7 +76,7 @@ class PdfCreator
         if($paperWith && $paperHeight) {
             $browsershot->paperSize($paperWith , $paperHeight, 'px' );
         }  else {
-            $browsershot->paperSize(760 , 1076, 'px' );
+            $browsershot->paperSize(1240 , 1754, 'px' );
         }
         $footer = $this->options['footer'] ?? null;
         if($footer) {
@@ -106,6 +106,7 @@ class PdfCreator
             $this->pdf->html = \Winter\Storm\Parse\Bracket::parse($htmlLayout, ['htmlContents' => $this->pdf->html]);
         }
         $html = $this->parseModelField($this->pdf->html, $this->vars);
+        //trace_log('instanciateHtmlPdf',$html);
         return $this->configureBrowsershot(Browsershot::html($html));
     }
 

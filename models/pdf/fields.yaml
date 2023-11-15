@@ -15,7 +15,7 @@ tabs:
             type: codeeditor
             language: html
             size: giant
-            permissions: [waka.mailer.admin.super]
+            permissions: [waka.snappypdf.admin.super]
             tab: waka.snappypdf::lang.model.pdf.tab_edit
         # prod_asks: 
         #     label: Mettre en place des données éditables lors de la géneration du modèle 
