@@ -74,17 +74,13 @@ class Plugin extends PluginBase
     public function registerPermissions()
     {
         return [
-            'waka.snappypdf.admin.super' => [
-                'tab' => 'Waka - Pdfer',
-                'label' => 'Super administrateur de Pdfer',
-            ],
             'waka.snappypdf.admin.base' => [
                 'tab' => 'Waka - Pdfer',
                 'label' => 'Administrateur de Pdfer',
             ],
-            'waka.snappypdf.user' => [
+            'waka.snappypdf.admin.super' => [
                 'tab' => 'Waka - Pdfer',
-                'label' => 'Utilisateur de Pdfer',
+                'label' => 'Super administrateur de Pdfer',
             ],
         ];
     }

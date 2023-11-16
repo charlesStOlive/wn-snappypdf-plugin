@@ -17,6 +17,8 @@ class Layouts extends Controller
         \Waka\Wutils\Behaviors\WakaControllerBehavior::class,
     ];
 
+    public $requiredPermissions = ['waka.snappypdf.admin.super'];
+
     public function __construct()
     {
         parent::__construct();

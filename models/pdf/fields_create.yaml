@@ -31,6 +31,7 @@ fields:
     #         - asks
     config:
         type: nestedform
+        permissions: waka.snappypdf.admin.super
         usePanelStyles: true
         form:
             fields: 
@@ -46,3 +47,4 @@ fields:
                     label: waka.snappypdf::lang.model.pdf.open_log
                     span: left
                     type: switch
+                    

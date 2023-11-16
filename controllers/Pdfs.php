@@ -17,7 +17,7 @@ class Pdfs extends Controller
         \Waka\Wutils\Behaviors\WakaControllerBehavior::class,
     ];
 
-    public $requiredPermissions = ['waka.snappypdf.*'];
+    public $requiredPermissions = ['waka.snappypdf.admin.*'];
 
     public function __construct()
     {
