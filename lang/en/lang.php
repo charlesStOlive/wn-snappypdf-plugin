@@ -6,34 +6,34 @@ return [
             'label' => 'Layouts',
         ],
         'pdfs' => [
-            'label' => 'Pdfs',
+            'label' => 'PDFs',
         ],
     ],
     'driver' => [
-        'description' => 'Création de PDF depuis un template ou une BDD',
+        'description' => 'Creating PDFs from a template or a database',
         'execute' => [
-            'success' => 'PDF prêt pour téléchargement',
+            'success' => 'PDF ready for download',
         ],
-        'label' => 'Création de PDF',
+        'label' => 'PDF Creation',
     ],
     'menu' => [
         'pdf' => [
-            'description' => 'Gestion des PDFs',
-            'label' => 'Pdfs',
+            'description' => 'PDF management',
+            'label' => 'PDFs',
         ],
     ],
     'model' => [
         'pdf' => [
-            'html' => 'Contenu html',
+            'html' => 'HTML content',
             'layout' => 'Layout',
-            'name' => 'Intitulé du PDF',
-            'open_log' => 'Activer le footer',
-            'output_name' => 'Nom de sortie',
-            'paper_height' => 'Hauteur du papier',
-            'paper_width' => 'Largeur du papier',
+            'name' => 'PDF title',
+            'open_log' => 'Activate the footer',
+            'output_name' => 'Output name',
+            'paper_height' => 'Paper height',
+            'paper_width' => 'Paper width',
             'slug' => 'Code/Slug',
             'tab_config' => 'Configuration',
-            'tab_edit' => 'Edition',
+            'tab_edit' => 'Editing',
         ],
     ],
     'models' => [
@@ -44,17 +44,17 @@ return [
         ],
         'layout' => [
             'label' => 'Layout',
-            'name' => 'Intitulé',
+            'name' => 'Title',
             'slug' => 'Code/Slug',
             'template' => 'Template',
         ],
         'pdf' => [
-            'label' => 'Pdf',
+            'label' => 'PDF',
         ],
-        'tab_edit' => 'Edition',
+        'tab_edit' => 'Editing',
     ],
     'plugin' => [
-        'description' => 'Aucune description fournie pour le moment...',
+        'description' => 'No description provided for now...',
         'name' => 'snappyPdf',
     ],
 ];
