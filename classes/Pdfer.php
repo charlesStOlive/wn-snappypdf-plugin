@@ -23,9 +23,9 @@ class Pdfer extends BaseProductor
             'productorFilesRegistration' =>  'registerSnappyPdfFileTemplates',
             'productor_yaml_config' => '~/plugins/waka/snappypdf/models/pdf/productor_config.yaml',
             'methods' => [
-                'download' => [
+                'prepareDownloadPdf' => [
                     'label' => 'télecharger un PDF',
-                    'handler' => 'saveTo',
+                    'handler' => 'prepareDownloadPdf',
                 ],
             ],
         ];
@@ -33,22 +33,20 @@ class Pdfer extends BaseProductor
 
     
 
-    public function execute($templateCode, $productorHandler, $allDatas):array {
+    public function prepareDownloadPdf($templateCode, $allDatas):array {
         $this->getBaseVars($allDatas);
-        if($productorHandler == "saveTo") {
-            $link = self::saveTo($templateCode, $this->data, function($pdf) use($allDatas) {
-                $pdf->setOutputName(\Arr::get($allDatas, 'productorDataArray.output_name'));
-            });
-            return [
-                'message' => 'waka.snappypdf::lang.driver.execute.success',
-                'btn' => [
-                    'label' => 'waka.productor::lang.drivers.success_label.close_download',
-                    'request' => 'onCloseAndDownload',
-                    'link' => $link
-                ],
-            ];
-        }
-        return [];
+        
+        $link = self::saveTo($templateCode, $this->data, function($pdf) use($allDatas) {
+            $pdf->setOutputName(\Arr::get($allDatas, 'productorDataArray.output_name'));
+        });
+        return [
+            'message' => 'waka.snappypdf::lang.driver.execute.success',
+            'btn' => [
+                'label' => 'waka.productor::lang.drivers.success_label.close_download',
+                'request' => 'onCloseAndDownload',
+                'link' => $link
+            ],
+        ];
     }
 
     public static function saveTo(string $templateCode, array $vars, Closure $callback = null) {
@@ -64,22 +62,6 @@ class Pdfer extends BaseProductor
             return $creator->saveTo();
         } catch (\Exception $ex) {
             throw new \ApplicationException($ex);
-        }
-        
-    }
-
-    public static function show(string $templateCode, array $vars, Closure $callback = null) {
-        // Créer l'instance de pdf
-        $creator = self::instanciateCreator($templateCode, $vars);
-        // Appeler le callback pour définir les options
-        if (is_callable($callback)) {
-            $callback($creator);
-        }
-
-        try {
-            return $creator->show();
-        } catch (\Exception $ex) {
-            throw $ex;
         }
         
     }
